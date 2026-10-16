@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lampy LED do BMW</title>
+<meta name="description" content="Reflektory przednie i lampy tylne LED do 10 modeli BMW. Wybierz model, kliknij i napisz na WhatsAppie.">
+<meta property="og:title" content="Lampy LED do BMW: przód i tył, 10 modeli">
+<meta property="og:description" content="F20, F30, F32, G20, F10, G30, X5 F15, X5 G05, X3 F25, X3 G01. Kliknij produkt i napisz na WhatsAppie.">
+<meta property="og:image" content="img/F30-P.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e0f11; --panel:#17191c; --panel2:#1e2125; --line:#2a2e33;
+  --text:#eef0f2; --muted:#9aa1a9; --accent:#1c69d4; --m1:#5fb4e5; --m2:#1c3f94; --m3:#e22718;
+  --wa:#25d366; --wa-dark:#1da851;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.5 Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.stripe{height:4px;background:linear-gradient(90deg,var(--m1) 0 33.3%,var(--m2) 33.3% 66.6%,var(--m3) 66.6%)}
+
+header{padding:44px 0 28px}
+h1{font:700 clamp(34px,6vw,58px)/1 "Barlow Condensed",sans-serif;letter-spacing:.5px;margin:0 0 12px;text-transform:uppercase}
+h1 span{color:var(--m1)}
+.lead{color:var(--muted);font-size:18px;max-width:640px;margin:0}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 0}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.step b{font:700 26px/1 "Barlow Condensed",sans-serif;color:var(--m1);min-width:20px}
+.step p{margin:0;font-size:15px;color:var(--muted)}
+.step p strong{color:var(--text);font-weight:600;display:block}
+
+nav.models{position:sticky;top:0;z-index:5;background:rgba(14,15,17,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:28px}
+nav.models .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:12px;padding-bottom:12px;scrollbar-width:none}
+nav.models .wrap::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font:600 15px "Barlow Condensed",sans-serif;letter-spacing:.4px;cursor:pointer;text-transform:uppercase}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
+
+main{padding:8px 0 40px}
+.model{padding:30px 0 6px;scroll-margin-top:70px}
+.model-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.model h2{font:700 30px/1.1 "Barlow Condensed",sans-serif;margin:0;text-transform:uppercase;letter-spacing:.4px}
+.model h2 small{color:var(--muted);font-weight:500;font-size:20px;margin-left:6px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;scroll-margin-top:80px;transition:border-color .3s, box-shadow .3s}
+.card.hl{border-color:var(--m1);box-shadow:0 0 0 3px rgba(95,180,229,.25)}
+.photo{position:relative;background:#fff;aspect-ratio:1/1;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;left:10px;top:10px;background:var(--bg);color:var(--text);font:700 13px "Barlow Condensed",sans-serif;letter-spacing:1px;padding:4px 10px;border-radius:6px;text-transform:uppercase}
+.tag.t{background:var(--m3)}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.body h3{margin:0;font:600 19px/1.25 Barlow,sans-serif}
+.fit{margin:0;color:var(--muted);font-size:14px}
+.feat{margin:0;padding:0;list-style:none;font-size:14px;color:#c9ced4}
+.feat li{padding-left:16px;position:relative}
+.feat li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--m1)}
+.bottom{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding-top:8px}
+.price{font:700 30px/1 "Barlow Condensed",sans-serif}
+.price small{display:block;font:400 12px Barlow,sans-serif;color:var(--muted);margin-top:4px}
+.code{font-size:12px;color:var(--muted)}
+
+.btn{appearance:none;border:0;cursor:pointer;background:var(--wa);color:#06210f;font:700 16px Barlow,sans-serif;border-radius:10px;padding:12px 16px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--wa-dark)}
+.btn svg{width:20px;height:20px}
+.combo{margin-top:12px;background:var(--panel2);border:1px dashed var(--line);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.combo p{margin:0;color:var(--muted)}
+.combo p strong{color:var(--text)}
+.btn.ghost{background:transparent;color:var(--wa);border:1px solid var(--wa)}
+.btn.ghost:hover{background:rgba(37,211,102,.1)}
+
+.info{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:30px 0 0}
+.info h2{font:700 24px "Barlow Condensed",sans-serif;text-transform:uppercase;margin:0 0 10px}
+.info ul{margin:0;padding-left:18px;color:#c9ced4}
+.info li{margin:4px 0}
+footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);font-size:14px}
+
+.float{position:fixed;right:16px;bottom:16px;z-index:9;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+
+@media (max-width:760px){
+  .steps{grid-template-columns:1fr}
+  .pair{grid-template-columns:1fr}
+  .bottom{flex-direction:column;align-items:stretch}
+  .btn{justify-content:center}
+  .combo{flex-direction:column;align-items:stretch}
+}
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<header class="wrap">
+  <h1>Lampy LED do <span>BMW</span></h1>
+  <p class="lead">Reflektory przednie i lampy tylne do 10 modeli BMW. Wybierz swój model, kliknij „Chcę kupić” i napisz do nas na WhatsAppie.</p>
+  <div class="steps">
+    <div class="step"><b>1</b><p><strong>Wybierz model</strong>Przód, tył albo komplet.</p></div>
+    <div class="step"><b>2</b><p><strong>Kliknij „Chcę kupić”</strong>Otworzy się WhatsApp z gotową wiadomością.</p></div>
+    <div class="step"><b>3</b><p><strong>Potwierdzamy dopasowanie</strong>Sprawdzamy po roczniku albo VIN i ustalamy dostawę.</p></div>
+  </div>
+</header>
+
+<nav class="models" aria-label="Modele"><div class="wrap" id="chips"></div></nav>
+
+<main class="wrap" id="list"></main>
+
+<div class="wrap">
+  <section class="info">
+    <h2>Dobrze wiedzieć</h2>
+    <ul>
+      <li>Cena dotyczy kompletu: lewa i prawa lampa.</li>
+      <li>Przed zamówieniem sprawdzamy, czy lampy pasują do Twojego auta (rocznik, wersja, VIN).</li>
+      <li>Dostawa zwykle 7–14 dni roboczych.</li>
+      <li>Masz inny model BMW? Napisz, poszukamy.</li>
+    </ul>
+  </section>
+</div>
+
+<footer class="wrap">
+  Pytania? Napisz na WhatsAppie, odpowiadamy szybko.
+</footer>
+
+<a class="btn float" id="floatBtn" href="#" aria-label="Napisz na WhatsAppie"></a>
+
+<script>
+/* ===== USTAWIENIA ===== */
+const WHATSAPP = "";          // numer z kierunkowym, same cyfry, np. "4917612345678" albo "48500123456"
+const MNOZNIK  = 1.3;         // cena Ali × mnożnik
+const KURS_EUR = 4.25;        // kurs EUR → PLN
+
+/* ===== PRODUKTY (ceny Ali w EUR, stan 15.10.2026) ===== */
+const MODELE = [
+  {id:"F20", nazwa:"Seria 1", kod:"F20 / F21", lata:"2015–2019 LCI",
+   P:{eur:1055.39, tytul:"Reflektory LED z soczewkami", fit:"F20/F21 LCI 2015–2018", cechy:["Dwukolorowe światła dzienne","Animacja powitalna","Plug & Play"]},
+   T:{eur:390.69, tytul:"Lampy tylne LED GTS, przyciemniane", fit:"F20/F21 LCI hatchback 2015–2019", cechy:["Dynamiczny kierunkowskaz","Przyciemniany klosz","Plug & Play"]}},
+  {id:"F30", nazwa:"Seria 3", kod:"F30", lata:"2012–2019",
+   P:{eur:547.99, tytul:"Reflektory LED w nowym stylu", fit:"F30 sedan 2013–2018", cechy:["Pełne LED","Światła dzienne","Plug & Play"]},
+   T:{eur:232.99, tytul:"Lampy tylne LED GTS", fit:"F30/F80 sedan 2012–2019 (nie pasuje do kombi F31)", cechy:["Dynamiczny kierunkowskaz","Styl GTS","Plug & Play"]}},
+  {id:"F32", nazwa:"Seria 4", kod:"F32 / F36", lata:"2013–2020",
+   P:{eur:637.86, tytul:"Reflektory LED z żółtymi ringami", fit:"F32/F36 2013–2020", cechy:["Żółte światła dzienne (angel eyes)","Soczewki projektorowe","Plug & Play"]},
+   T:{eur:212.39, tytul:"Lampy tylne LED, czarne", fit:"F32/F33/F36/F82 2014–2020", cechy:["Sekwencyjny kierunkowskaz","Animacja powitalna","Plug & Play"]}},
+  {id:"G20", nazwa:"Seria 3", kod:"G20", lata:"2019–2025",
+   P:{eur:970.99, tytul:"Reflektory LED z soczewkami", fit:"G20/G28 2019–2025", cechy:["Światła dzienne LED","Dynamiczny kierunkowskaz","Plug & Play"]},
+   T:{eur:230.39, tytul:"Lampy tylne LED GTS, czarne", fit:"G20/G28/G80 2019–2025", cechy:["Sekwencyjny kierunkowskaz","Styl GTS","Plug & Play"]}},
+  {id:"F10", nazwa:"Seria 5", kod:"F10", lata:"2011–2017",
+   P:{eur:848.39, tytul:"Reflektory LED w stylu G38", fit:"F10/F11/F18 2011–2017", cechy:["Światła dzienne w kształcie L","Podwójne soczewki","Wygląd nowej piątki"]},
+   T:{eur:226.69, tytul:"Lampy tylne LED w stylu LCI", fit:"F10/F18 sedan 2011–2017 (nie pasuje do kombi F11)", cechy:["Pełne LED","Wygląd po liftingu","Plug & Play"]}},
+  {id:"G30", nazwa:"Seria 5", kod:"G30", lata:"2017–2023",
+   P:{eur:562.39, tytul:"Reflektory LED z soczewkami", fit:"G30 2018–2023", cechy:["Jasne soczewki LED","Światła dzienne","Plug & Play"]},
+   T:{eur:331.39, tytul:"Lampy tylne LED w stylu liftingu", fit:"G30/F90 M5 2017–2020", cechy:["Sekwencyjny kierunkowskaz","Wygląd po liftingu","Plug & Play"]}},
+  {id:"F15", nazwa:"X5", kod:"F15", lata:"2014–2018",
+   P:{eur:869.39, tytul:"Reflektory LED z soczewkami", fit:"X5 F15 / X6 F16 2014–2018", cechy:["Światła dzienne LED","Kierunkowskaz LED","Plug & Play"]},
+   T:{eur:205.69, tytul:"Lampy tylne LED z animacją", fit:"X5 F15 2014–2018", cechy:["Sekwencyjny kierunkowskaz","Animacja powitalna","Plug & Play"]}},
+  {id:"G05", nazwa:"X5", kod:"G05", lata:"2019–2025",
+   P:{eur:849.39, tytul:"Reflektory LED, światła w kształcie strzałki", fit:"X5 G05 2019–2025", cechy:["Dwukolorowe światła dzienne","Sekwencyjny kierunkowskaz","Soczewki projektorowe"]},
+   T:{eur:330.12, tytul:"Lampy tylne LED, nowy wzór", fit:"X5 G05 2019–2023", cechy:["Dynamiczny kierunkowskaz","Nowoczesny wygląd","Para lewa + prawa"]}},
+  {id:"F25", nazwa:"X3", kod:"F25", lata:"2014–2017",
+   P:{eur:681.99, tytul:"Reflektory LED z dynamicznym kierunkowskazem", fit:"X3 F25 LCI 2014–2017", cechy:["Światła dzienne LED","Dynamiczny kierunkowskaz","Plug & Play"]},
+   T:{eur:354.69, tytul:"Lampy tylne LED w nowym stylu", fit:"X3 F25 2010–2017", cechy:["Dynamiczny kierunkowskaz","Światła dzienne LED","Plug & Play"]}},
+  {id:"G01", nazwa:"X3", kod:"G01", lata:"2018–2021",
+   P:{eur:1035.39, tytul:"Reflektory LED z soczewkami", fit:"X3 G01/G08 2018–2021", cechy:["Światła dzienne LED","Kierunkowskaz LED","Plug & Play"]},
+   T:{eur:381.94, tytul:"Lampy tylne LED", fit:"X3 G01/G08 2018–2021", cechy:["Dynamiczny kierunkowskaz","Światła dzienne LED","Plug & Play"]}}
+];
+
+/* ===== LOGIKA ===== */
+const cena = eur => Math.ceil(eur * MNOZNIK * KURS_EUR / 10) * 10 - 1;
+const zl = n => n.toLocaleString("pl-PL") + " zł";
+const baseUrl = () => location.href.split("#")[0];
+const WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>';
+
+function waLink(text){
+  return WHATSAPP ? "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text) : null;
+}
+function otworz(text){
+  const l = waLink(text);
+  if (l) window.open(l, "_blank", "noopener");
+  else alert("Numer WhatsApp nie jest jeszcze ustawiony.\n\nWiadomość, która by się wysłała:\n\n" + text);
+}
+function msgProdukt(m, strona){
+  const p = m[strona], kod = m.id + "-" + strona;
+  return "Dzień dobry, chcę kupić z katalogu:\n" +
+    "BMW " + m.nazwa + " " + m.kod + ": " + p.tytul + " (" + (strona === "P" ? "przód" : "tył") + ")\n" +
+    "Kod: " + kod + "\nCena: " + zl(cena(p.eur)) + "\n" +
+    "Link: " + baseUrl() + "#" + kod + "\n\nMój rocznik / VIN: ";
+}
+function msgKomplet(m){
+  return "Dzień dobry, chcę kupić komplet przód + tył:\n" +
+    "BMW " + m.nazwa + " " + m.kod + "\n" +
+    "Kody: " + m.id + "-P i " + m.id + "-T\nCena: " + zl(cena(m.P.eur) + cena(m.T.eur)) + "\n" +
+    "Link: " + baseUrl() + "#" + m.id + "\n\nMój rocznik / VIN: ";
+}
+
+function card(m, s){
+  const p = m[s], kod = m.id + "-" + s;
+  return `<article class="card" id="${kod}">
+    <div class="photo"><img src="img/${kod}.webp" alt="BMW ${m.kod} ${s === "P" ? "reflektory przednie" : "lampy tylne"} LED" loading="lazy" width="640" height="640">
+      <span class="tag ${s === "T" ? "t" : ""}">${s === "P" ? "Przód" : "Tył"}</span></div>
+    <div class="body">
+      <h3>${p.tytul}</h3>
+      <p class="fit">Pasuje: ${p.fit}</p>
+      <ul class="feat">${p.cechy.map(c => `<li>${c}</li>`).join("")}</ul>
+      <div class="bottom">
+        <div class="price">${zl(cena(p.eur))}<small>komplet L + P · kod ${kod}</small></div>
+        <button class="btn" data-m="${m.id}" data-s="${s}">${WA_ICON}Chcę kupić</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+document.getElementById("list").innerHTML = MODELE.map(m => `
+  <section class="model" id="${m.id}" data-id="${m.id}">
+    <div class="model-head"><h2>BMW ${m.nazwa} ${m.kod}<small>${m.lata}</small></h2></div>
+    <div class="pair">${card(m, "P")}${card(m, "T")}</div>
+    <div class="combo"><p>Komplet przód + tył: <strong>${zl(cena(m.P.eur) + cena(m.T.eur))}</strong></p>
+      <button class="btn ghost" data-m="${m.id}" data-s="K">${WA_ICON}Chcę komplet</button></div>
+  </section>`).join("");
+
+const chips = document.getElementById("chips");
+chips.innerHTML = `<button class="chip" aria-pressed="true" data-f="">Wszystkie</button>` +
+  MODELE.map(m => `<button class="chip" aria-pressed="false" data-f="${m.id}">${m.nazwa} ${m.kod.split(" ")[0]}</button>`).join("");
+chips.addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  chips.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+  const f = b.dataset.f;
+  document.querySelectorAll(".model").forEach(s => s.hidden = f && s.dataset.id !== f);
+  window.scrollTo({top: document.querySelector("nav.models").offsetTop, behavior: "smooth"});
+});
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button.btn"); if (!b) return;
+  const m = MODELE.find(x => x.id === b.dataset.m);
+  otworz(b.dataset.s === "K" ? msgKomplet(m) : msgProdukt(m, b.dataset.s));
+});
+
+const fb = document.getElementById("floatBtn");
+fb.innerHTML = WA_ICON + "WhatsApp";
+fb.addEventListener("click", e => { e.preventDefault(); otworz("Dzień dobry, mam pytanie o lampy LED do BMW.\nMój model / rocznik: "); });
+
+function highlight(){
+  const h = decodeURIComponent(location.hash.slice(1)); if (!h) return;
+  const el = document.getElementById(h); if (!el) return;
+  el.scrollIntoView({behavior: "smooth", block: "start"});
+  if (el.classList.contains("card")) { el.classList.add("hl"); setTimeout(() => el.classList.remove("hl"), 3500); }
+}
+window.addEventListener("hashchange", highlight);
+highlight();
+</script>
+</body>
+</html>
